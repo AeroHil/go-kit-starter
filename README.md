@@ -15,19 +15,16 @@ transport for the other. Or even service multiple transports for a service at
 once.
 
 ## Description
-I've spent a lot of time looking through GitHub trying to find the best layout for a 
+I've spent a lot of time looking through GitHub trying to find the best layout for 
 microservices pattern made with Go-Kit. I needed a simple and yet somewhat complete 
-template to start pushing small builds of microservices out at the production level. 
-So naturally, I spend a lot of time combining what I like the most from each of 
-these repositories.
+template to start pushing builds out at the production level. So naturally, I spend 
+a lot of time combining what I like the most from each of these fantastic repositories.
 
 - https://github.com/SeamPay/gokita
 - https://github.com/antklim/go-microservices
 - https://github.com/kujtimiihoxha/kit
 
-I just wanted to share it in case anyone else likes their code neat and organized as well ;)
-
-### Package
+### Package - main go-kit components
 
 - Transport layer (grpc/http)
 - Endpoint layer
@@ -95,7 +92,7 @@ I just wanted to share it in case anyone else likes their code neat and organize
             └── transport.go
 ```
 ### Directories/Files
-I won't be going over the obvious files, but I do want to call out the intent of most file
+I won't be going over the obvious files, but I do want to address most files for beginners
 
 `build/Dockerfile` - docker file of how this microservice is containerize
 
@@ -123,8 +120,8 @@ I won't be going over the obvious files, but I do want to call out the intent of
 
 `pkg/transport/http/*` - HTTP handlers and transport code (separated for readability) 
 
-As you build upon your microservice, things start to get messy real soon. The project might look too big, but it'll 
-be good to grow into.
+As you build upon your microservice, things start to get messy real soon. The project might look spread out 
+right now, but it'll be good to grow into. Feel free to move things around as needed.
 
 ## Getting Started
 
@@ -133,7 +130,7 @@ be good to grow into.
 To get this service up and running you'll need to have a few things installed beforehand:
 
 1. [Go](https://golang.org/doc/install)
-2. [Protobuf](https://github.com/google/protobuf) and all its generation requirements
+2. [Protobuf](https://github.com/google/protobuf)
 
 
 Install gRPC prerequisite
@@ -145,8 +142,6 @@ and/or
 go get -u google.golang.org/grpc
 go get -u github.com/golang/protobuf/protoc-gen-go
 ```
-
-I put together a little [setup readme]() collected from many sources. So I can also have a clean and neat Go install too ;)
 
 ### Dependencies
 

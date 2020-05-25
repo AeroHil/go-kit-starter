@@ -7,11 +7,16 @@ import (
 
 // Service describes your service.
 type API interface {
-	Greeting(ctx context.Context, name string) (string, error)
 	Health(ctx context.Context) bool
+	Greeting(ctx context.Context, name string) (string, error)
 }
 
 type Service struct{}
+
+// Health implementation of the Service.
+func (s Service) Health(ctx context.Context) bool {
+	return true
+}
 
 // Greeting implementation of the Service.
 func (s Service) Greeting(ctx context.Context, name string) (string, error) {
@@ -20,11 +25,6 @@ func (s Service) Greeting(ctx context.Context, name string) (string, error) {
 	}
 	str := "GO-KIT Hello " + name
 	return str, nil
-}
-
-// Health implementation of the Service.
-func (s Service) Health(ctx context.Context) bool {
-	return true
 }
 
 // NewService returns a naive, stateless implementation of Service.
