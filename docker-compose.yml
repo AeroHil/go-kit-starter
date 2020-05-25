@@ -1,0 +1,26 @@
+version: "2"
+
+# All of the images/containers compose will deal with
+services:
+  # sets up a service named "go_api" (this name can be used with docker-compose commands)
+  go_api:
+    build:
+      context: .
+      dockerfile: build/Dockerfile
+    restart: always
+    volumes:
+    - .:/go/src/aerobisoft.com/platform
+
+    # creates a container named "microservice"
+    container_name: microservice
+    environment:
+      - ENVIRONMENT=development
+      - DEBUG_ADDR=:8080
+      - HTTP_ADDR=:8081
+      - GRPC_ADDR=:8082
+
+    # connects port 8082 inside Docker as port 8800 on the host machine
+    ports:
+    - 8800:8081
+    - 8801:8082
+    - 9000:8080
