@@ -5,7 +5,7 @@ import (
 	"errors"
 )
 
-// Service describes your service.
+// API describes your service.
 type API interface {
 	Health(ctx context.Context) bool
 	Greeting(ctx context.Context, name string) (string, error)

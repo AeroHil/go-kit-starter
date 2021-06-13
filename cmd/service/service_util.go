@@ -42,11 +42,11 @@ func defaultHttpOptions(logger log.Logger, tracer opentracinggo.Tracer, zipkinTr
 	options := map[string][]http.ServerOption{
 		EndpointNames.Health: {
 			http.ServerErrorEncoder(abtransporthttp.EncodeError),
-			http.ServerErrorLogger(logger),
+			http.ServerErrorHandler(transport.NewLogErrorHandler(logger)),
 			http.ServerBefore(opentracing.HTTPToContext(tracer, EndpointNames.Health, logger))},
 		EndpointNames.Greeting: {
 			http.ServerErrorEncoder(abtransporthttp.EncodeError),
-			http.ServerErrorLogger(logger),
+			http.ServerErrorHandler(transport.NewLogErrorHandler(logger)),
 			http.ServerBefore(opentracing.HTTPToContext(tracer, EndpointNames.Greeting, logger))},
 	}
 
