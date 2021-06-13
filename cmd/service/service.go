@@ -25,8 +25,12 @@ import (
 
 func createService(endpoints abendpoint.Endpoints) (g *group.Group) {
 	g = &group.Group{}
-	initGRPCHandler(endpoints, g)
-	initHttpHandler(endpoints, g)
+	if grpcAddr != "" {
+		initGRPCHandler(endpoints, g)
+	}
+	if httpAddr != "" {
+		initHttpHandler(endpoints, g)
+	}
 	return g
 }
 
