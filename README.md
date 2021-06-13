@@ -178,6 +178,6 @@ go build cmd/main.go
 ```
 To run the server after the `main` executable is built
 ```
-./main server -environment=development -debug-addr=:8080 -grpc-addr=:8082 -http-addr=:8081
+./main server -environment=development -debug-addr=:8080 -grpc-addr=:8082 -http-addr=:8081 -zipkin-addr=http://localhost:9411/api/v2/spans
 ```
 

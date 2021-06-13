@@ -54,8 +54,8 @@ func Run(c *cli.Context) error {
 	svc := abservice.New(getServiceMiddleware(logger))
 	eps := abendpoint.New(svc, getEndpointMiddleware(logger))
 	g := createService(eps)
-	initMetricsEndpoint(g)
-	initCancelInterrupt(g)
+	initMetricsEndpoint(g) // initialize prometheus metrics http endpoint
+	initCancelInterrupt(g) // graceful shutdown
 	logger.Log("exit", g.Run())
 
 	return nil
